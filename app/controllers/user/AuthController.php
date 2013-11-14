@@ -29,23 +29,19 @@ class AuthController extends BaseController {
 
         catch (\Cartalyst\Sentry\Users\LoginRequiredException $e)
         {
-            $error = 'Adres e-mail jest wymagany.';
+            Notification::error('Adres e-mail jest wymagany.');
         }
         catch (\Cartalyst\Sentry\Users\PasswordRequiredException $e)
         {
-            $error ='Hasło jest wymagane.';
+            Notification::error('Hasło jest wymagane.');
         }
 
         catch (\Cartalyst\Sentry\Users\UserNotFoundException $e)
         {
-            $error ='Użytkownik nie jest zarejestrowany lub informacje logowania są nieprawidłowe.';
+            Notification::error('Użytkownik nie jest zarejestrowany lub informacje logowania są nieprawidłowe.');
         }
 
-        catch(\Exception $e)
-        {
-            $error = $e->getMessage();
-        }
-        return Redirect::route('user.login')->withErrors(array('login' => $error));
+        return Redirect::route('user.login');
     }
 
     public function getLogout()
@@ -82,28 +78,20 @@ class AuthController extends BaseController {
 
             Notification::success('Konto użytkownika utworzone pomyślnie. Można się zalogować.');
             return Redirect::route('user.login');
-
         }
         catch (\Cartalyst\Sentry\Users\LoginRequiredException $e)
         {
-            $error = 'Adres e-mail jest wymagany.';
+            Notification::error('Adres e-mail jest wymagany.');
         }
         catch (\Cartalyst\Sentry\Users\PasswordRequiredException $e)
         {
-            $error ='Hasło jest wymagane.';
+            Notification::error('Hasło jest wymagane.');
         }
         catch (\Cartalyst\Sentry\Users\UserExistsException $e)
         {
-            $error = 'Użytkownik o takiej nazwie jest już zarejestrowany. Wybierz inną.';
+            Notification::error('Użytkownik o takiej nazwie jest już zarejestrowany. Wybierz inną.');
         }
 
-        catch(\Exception $e)
-        {
-            $error = $e->getMessage();
-        }
-
-        return Redirect::route('user.register')->withErrors(array('register' => $error));
+        return Redirect::route('user.register');
     }
-
-
 }

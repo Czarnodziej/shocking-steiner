@@ -9,8 +9,8 @@ app/config/database.php
 /old
 composer.phar
 composer.lock
-CRUD.sublime-project
-CRUD.sublime-workspace
+steiner.sublime-project
+steiner.sublime-workspace
 .phptidy-cache
 phpunit.xml
 upgrade.md

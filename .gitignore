@@ -1,0 +1,16 @@
+/app/database/seeds/SentrySeeder.php
+/app/config/app.php
+/app/config/mail.php
+/app/config/queue.php
+app/config/database.php
+/bootstrap/compiled.php
+/vendor
+/nbproject
+/old
+composer.phar
+composer.lock
+CRUD.sublime-project
+CRUD.sublime-workspace
+.phptidy-cache
+phpunit.xml
+upgrade.md

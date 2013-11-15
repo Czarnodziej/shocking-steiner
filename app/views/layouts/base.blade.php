@@ -2,7 +2,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0,	user-scalable=no">
-	<title>Zadanie rekrutacyjne</title>
+	<title>CRUD</title>
 	@section('head')
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=latin-ext' rel='stylesheet'>
 	<link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">

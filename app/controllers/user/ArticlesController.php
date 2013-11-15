@@ -1,8 +1,7 @@
 <?php namespace App\Controllers\User;
 
 use App\Models\Article;
-use App\Services\Validators\ArticleValidator;
-use Input, Notification, Redirect, Sentry, Str;
+use Input, Notification, Redirect, Sentry, Str, Validator;
 
 class ArticlesController extends \BaseController {
 
@@ -23,9 +22,19 @@ class ArticlesController extends \BaseController {
 
 	public function store()
 	{
-		$validation = new ArticleValidator;
+		$data = Input::all();
+		$rules = array(
+			'title' => 'required',
+			'body' => 'required',
+			);
+		$messages = array(
+			'title.required' => 'Tytuł jest niezbędny.',
+			'body.required' => 'Treść jest konieczna.'
+			);
 
-		if ($validation->passes())
+		$validator = Validator::make($data, $rules, $messages);
+
+		if ($validator->passes())
 		{
 			$article = new Article;
 			$article->title   = Input::get('title');
@@ -39,7 +48,7 @@ class ArticlesController extends \BaseController {
 			return Redirect::route('użytkownik.teksty.index');
 		}
 
-		return Redirect::back()->withInput()->withErrors($validation->errors);
+		return Redirect::back()->withInput()->withErrors($validator);
 	}
 
 	public function edit($id)
@@ -49,9 +58,19 @@ class ArticlesController extends \BaseController {
 
 	public function update($id)
 	{
-		$validation = new ArticleValidator;
+		$data = Input::all();
+		$rules = array(
+			'title' => 'required',
+			'body' => 'required',
+			);
+		$messages = array(
+			'title.required' => 'Tytuł jest niezbędny.',
+			'body.required' => 'Treść jest konieczna.'
+			);
 
-		if ($validation->passes())
+		$validator = Validator::make($data, $rules, $messages);
+
+		if ($validator->passes())
 		{
 			$article = Article::find($id);
 			$article->title   = Input::get('title');
@@ -63,7 +82,7 @@ class ArticlesController extends \BaseController {
 			return Redirect::route('użytkownik.teksty.index');
 		}
 
-		return Redirect::back()->withInput()->withErrors($validation->errors);
+		return Redirect::back()->withInput()->withErrors($validator);
 	}
 
 	public function destroy($id)

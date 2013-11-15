@@ -2,6 +2,11 @@
 @section('main_content')
 <h2>Edycja artykułu</h2>
 {{ Notification::showAll() }}
+<ul class="errors">
+@foreach($errors->all() as $message)
+<li>{{ $message }}</li>
+    @endforeach
+</ul>
 {{ Form::model($article, array('method' => 'put', 'route' => array('użytkownik.teksty.update', $article->id))) }}
 
 <div>

@@ -5,4 +5,5 @@ Multi user CRUD:
   ✔ fix CSS/JS @done (13.11.13 14:35)
     ✔ remove unecessary data/files @done (13.11.13 13:04)
   ✔ verify the functionality @done (13.11.13 15:18)
-  ☐ add registration/login validation rules declared in controllers instead of service
+  ✔ add validation rules declared in controllers instead of service @done (15.11.13 14:21)
+    ✔ show custom validator messages @done (15.11.13 14:39)
